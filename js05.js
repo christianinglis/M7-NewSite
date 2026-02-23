@@ -69,6 +69,7 @@ function createLightbox() {
       let image = document.createElement("img");
       image.src = imgFiles[i];
       image.alt = imgCaptions[i];
+      image.onclick = createOverlay;
       lbImages.appendChild(image);
    }
 
@@ -92,6 +93,21 @@ function createLightbox() {
 
       let figureBox = document.createElement("figure");
       overlay.appendChild(figureBox);
+
+      let overlayImage = this.cloneNode("true")
+      figureBox.appendChild(overlayCaption);
+
+      let overlayCaption = document.createElement("figcaption");
+      overlayCaption.textContent = this.alt;
+      figureBox.appendChild(overlayCaption);
+
+      let closeBox = document.createElement("div")
+      closeBox.id = "lbOverlayClose";
+      closeBox.innerHTML = "&times;";
+      closeBox.onclick = function() {
+         document.body.removeChild(overlay);
+      }
+      overlay.appendChild(closeBox);
 
       document.body.appendChild(overlay);
    }
