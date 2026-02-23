@@ -25,22 +25,41 @@ function createLightbox() {
    // Design the lightbox title
    lightbox.appendChild(lbTitle);
    lbTitle.id = "lbTitle";
+   lbTitle.textContent = lightboxTitle;
 
    // Design the lightbox slide counter
    lightbox.appendChild(lbCounter);
    lbCounter.id = "lbCounter";
+   let currentImg = 1;
+   lbCounter.textContent = currentImg + " / " + imgCount;
 
    // Design the lightbox previous slide button
    lightbox.appendChild(lbPrev);
    lbPrev.id = "lbPrev";
+   lbPrev.innerHTML = "&#9664;";
+   lbPrev.onclick - showPrev;
 
    // Design the lightbox next slide button
    lightbox.appendChild(lbNext);
    lbNext.id = "lbNext";
+   lbNext.innerHTML = "&#9654;";
+   lbNext.onclick = showNext;
 
    // Design the lightbox Play-Pause button
    lightbox.appendChild(lbPlay);
    lbPlay.id = "lbPlay";
+   lbPlay.innerHTML = "&#9199;";
+   let timeID;
+   lbPlay.onclick = function() {
+      if (timeID) {
+         window.clearInterval(timeID);
+         timeID = undefined;
+      } else {
+      showNext();
+      timeID = window.setInterval(snowNext, 1500);
+      }
+      
+   }
 
    // Design the lightbox images container
    lightbox.appendChild(lbImages);
@@ -50,7 +69,22 @@ function createLightbox() {
       let image = document.createElement("img");
       image.src = imgFiles[i];
       image.alt = imgCaptions[i];
-      lbImages.appendChild(images);
+      lbImages.appendChild(image);
+   }
+
+   // Function to move forward through the image list
+   function showNext() {
+      lbImages.appendChild(lbImages.firstElementChild);
+      (currentImg < imgCount) ? currentImg++ : currentImg = 1;
+      lbCounter.textContent = currentImg + " / " + imgCount;
+   }
+
+   // Function to move backward through the image list
+   function showPrev() {
+      lbImages.insertBefore(lbImages.lastElementChild, lbImages.firstElementChild);
+      (currentImg > 1) ? currentImg-- : currentImg = imgCount;
+      lbCounter.textContent = currentImg + " / " + imgCount;
+
    }
 }
 window.addEventListener("load", setupGallery);
