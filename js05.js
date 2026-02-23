@@ -37,7 +37,7 @@ function createLightbox() {
    lightbox.appendChild(lbPrev);
    lbPrev.id = "lbPrev";
    lbPrev.innerHTML = "&#9664;";
-   lbPrev.onclick - showPrev;
+   lbPrev.onclick = showPrev;
 
    // Design the lightbox next slide button
    lightbox.appendChild(lbNext);
@@ -56,7 +56,7 @@ function createLightbox() {
          timeID = undefined;
       } else {
       showNext();
-      timeID = window.setInterval(snowNext, 1500);
+      timeID = window.setInterval(showNext, 1500);
       }
       
    }
