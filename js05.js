@@ -4,12 +4,24 @@
       Chapter Case
 
       Application to generate a slide show
-      Author: 
-      Date:   
+      Author: Christian Inglis
+      Date: 2/23/2026
 
       Filename: js05.js
 */
+window.addEventListener("load", createLightbox);
+function createLightbox() {
+   // Lightbox Container
+   let lightbox = document.getElementById("lightbox");
 
+   // Parts of the lightbox
+   let lbTitle = document.createElement("h1");
+   let lbCounter = document.createElement("div");
+   let lbPrev = document.createElement("div");
+   let lbNext = document.createElement("div");
+   let lbPlay = document.createElement("div");
+   let lbImages = document.createElement("div");
+}
 window.addEventListener("load", setupGallery);
 
 function setupGallery() {
