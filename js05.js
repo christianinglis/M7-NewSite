@@ -21,6 +21,37 @@ function createLightbox() {
    let lbNext = document.createElement("div");
    let lbPlay = document.createElement("div");
    let lbImages = document.createElement("div");
+
+   // Design the lightbox title
+   lightbox.appendChild(lbTitle);
+   lbTitle.id = "lbTitle";
+
+   // Design the lightbox slide counter
+   lightbox.appendChild(lbCounter);
+   lbCounter.id = "lbCounter";
+
+   // Design the lightbox previous slide button
+   lightbox.appendChild(lbPrev);
+   lbPrev.id = "lbPrev";
+
+   // Design the lightbox next slide button
+   lightbox.appendChild(lbNext);
+   lbNext.id = "lbNext";
+
+   // Design the lightbox Play-Pause button
+   lightbox.appendChild(lbPlay);
+   lbPlay.id = "lbPlay";
+
+   // Design the lightbox images container
+   lightbox.appendChild(lbImages);
+   lbImages.id = "lbImages";
+   // Add images from the imgFiles array to the container
+   for (let i = 0; i < imgCount; i++) {
+      let image = document.createElement("img");
+      image.src = imgFiles[i];
+      image.alt = imgCaptions[i];
+      lbImages.appendChild(images);
+   }
 }
 window.addEventListener("load", setupGallery);
 
