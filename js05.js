@@ -86,6 +86,15 @@ function createLightbox() {
       lbCounter.textContent = currentImg + " / " + imgCount;
 
    }
+   function createOverlay() {
+      let overlay = document.createElement("div");
+      overlay.id = "lbOverlay";
+
+      let figureBox = document.createElement("figure");
+      overlay.appendChild(figureBox);
+
+      document.body.appendChild(overlay);
+   }
 }
 window.addEventListener("load", setupGallery);
 
